@@ -2,7 +2,7 @@ import random
 print('\n \n ----------Start---------- \n \n')
 
 
-def validate(rps):
+def validate(rps):  # Function that validates a rock, paper, scissors input and returns it as a string or rock, paper, scissors
     '''
     Validates if the input is either rock, paper, or scissors and returns that value in the corect format. If it is not valid, it asks for a valid entry and re-runs the validation
     '''
@@ -18,19 +18,20 @@ play_again = True
 
 while play_again:
 
-    game_round = 0
+    game_round = 0  # Resets variables for the game
     player1_victories = 0
     player2_victories = 0
 
     print('Lets play Rock, Paper, Scissors!')
-    players = input(
+
+    players = input(  # Selects if 1 or 2 players are playing
         'How many players are playing? 1 or 2?: ').casefold().strip()
     while not players in ('1', '2'):
         print('That was an invalid entry, let\'s try again')
         players = input(
             'How many players are playing? 1 or 2?: ').casefold().strip()
 
-    best_of = input(
+    best_of = input(  # Selects how many rounds will be plyed
         'Alright, and it will be best of how many rounds?: ').casefold().strip()
     while not str.isdecimal(best_of) or int(best_of) <= 0:
         print('That was an invalid entry, let\'s try again')
@@ -38,7 +39,7 @@ while play_again:
             'Alright, and it will be best of how many rounds?: ').casefold().strip()
     best_of = int(best_of)
 
-    while game_round <= best_of:
+    while game_round <= best_of:  # Loops till the number of rounds has been reached
 
         # Player 1's choice
         player1 = input('Player 1, chose Rock, Paper, or Scissors: ')
@@ -56,6 +57,7 @@ while play_again:
         print('Now lets go!')
         print('ROCK, PAPER, SCISSORS!!!')
 
+        # Algarithem that determins who wins
         if ('rock', 'paper', 'scissor').index(player1) == ('scissor', 'rock', 'paper').index(player2):
             print('Player 1 wins!')
             player1_victories = player1_victories + 1
@@ -80,8 +82,7 @@ while play_again:
                 print(
                     f'The score is Player 1: {player1_victories} to Player 2: {player2_victories}\n')
 
-        # Play again loop
-        while best_of == 0:
+        while best_of == 0:  # Play again loop
             play_again = input('Play again?: ').casefold().strip()
             if play_again == 'yes':
                 play_again = True
